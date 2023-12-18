@@ -1,0 +1,15 @@
+<!-- for(const el of array) {} -->
+<!--
+
+    for(let i = 0; i < pkmns.results.length; i++) {
+      console.log(pkmns.results[i]) // {name, url}
+    }
+
+    for(let pkmn of pkmns.results) {
+      console.log(pkmn) // {name, url}
+    }
+
+   -->
+<main>
+  <app-single-pokemon *ngFor="let pkmn of pkmns.results" [pokemonName]="pkmn.name"></app-single-pokemon>
+</main>

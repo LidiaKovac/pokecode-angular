@@ -1,0 +1,18 @@
+<div class="single-pkmn__wrap">
+  <!-- {
+    pippo-forever: "paperino"
+  }
+  obj.pippo-forever
+  obj["pippo-forever"]
+-->
+  <img
+    [src]="pokemon.sprites.other?.['official-artwork']?.front_default"
+    alt=""
+  />
+  <h3>{{ pokemonName }}</h3>
+  <ul>
+    <li *ngFor="let ab of pokemon.abilities">
+      {{ ab.ability.name }}
+    </li>
+  </ul>
+</div>
