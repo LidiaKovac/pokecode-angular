@@ -10,7 +10,7 @@
     }
 
    -->
-<main>
+<main *ngIf="pkmns?.results">
   <app-single-pokemon
     *ngFor="let pkmn of pkmns.results"
     [pokemonName]="pkmn.name"

@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SinglePokemonComponent } from './components/single-pokemon/single-pokemon.component';
 import { PokemonDetailsComponent } from './views/pokemon-details/pokemon-details.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   // componenti
@@ -21,7 +22,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,4 +4,12 @@
   <div class="button button--small"></div>
   <div class="button button--small"></div>
   <div class="button button--small"></div>
+  <form (submit)="search($event)">
+    <input name="query" type="text" [(ngModel)]="query" />
+    <button style="display: none"></button>
+  </form>
+  <!-- <input type="text" [formControl]="query2" /> -->
+  <!-- fn(ev) {
+       ev.target.value => cerca
+    } -->
 </nav>

@@ -11,6 +11,7 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 })
 export class PokemonDetailsComponent {
   pokemon!: Pokemon;
+  error: string|null = null
   constructor(private route: ActivatedRoute, private pkmnSrv: PokemonService) {
     // route.paramMap.subscribe((param) => {
     //   console.log(param.get("name"));
@@ -39,7 +40,13 @@ export class PokemonDetailsComponent {
         })
       )
       .subscribe((pkmn) => {
-        this.pokemon = pkmn
+        if(typeof pkmn === "string") {
+          // C'è stato un errore
+          this.error = pkmn
+        } else {
+          this.error = null
+          this.pokemon = pkmn
+        }
       });
   }
 }

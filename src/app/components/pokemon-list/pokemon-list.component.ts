@@ -39,7 +39,7 @@ export class PokemonListComponent {
       this.pkmns = pkmn;
       // page 3 => 2,3,4,5,6
       this.displayPageNo = this.pageNo.slice(
-        this.currentPage - 1 < 0 ? 0 : this.currentPage -1, //2
+        this.currentPage - 1 < 0 ? 0 : this.currentPage - 1, //2
         this.currentPage + 4 //7 ( -1)
       );
     });
