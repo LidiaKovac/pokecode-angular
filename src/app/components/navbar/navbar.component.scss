@@ -1,0 +1,38 @@
+nav {
+  height: 100px;
+  background-color: #dc0a2d;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-inline: 10px;
+  .button {
+    border-radius: 50%;
+    &--big {
+      background-color: aqua;
+      border-top: lighten(rgb(0, 255, 255), 40) solid 5px;
+      border-left: lighten(rgb(0, 255, 255), 40) solid 5px;
+      width: 50px;
+      height: 50px;
+    }
+    &--small {
+      width: 15px;
+      height: 15px;
+
+      &:nth-of-type(2) {
+        border-top: lighten(orange, 30) solid 2px;
+        border-left: lighten(orange, 30) solid 2px;
+        background-color: orange;
+      }
+      &:nth-of-type(3) {
+        border-top: lighten(yellow, 20) solid 2px;
+        border-left: lighten(yellow, 20) solid 2px;
+        background-color: yellow;
+      }
+      &:nth-of-type(4) {
+        border-top: lighten(green, 20) solid 2px;
+        border-left: lighten(green, 20) solid 2px;
+        background-color: green;
+      }
+    }
+  }
+}

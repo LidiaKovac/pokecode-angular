@@ -1,10 +1,13 @@
-<h1>{{pokemon.name}}</h1>
-<img [src]="pokemon.sprites.other?.['official-artwork']?.front_default" alt="">
+<h1>{{ pokemon.name }}</h1>
+<img
+  [src]="pokemon.sprites.other?.['official-artwork']?.front_default"
+  alt=""
+/>
 <ul>
-  <li *ngFor="let ab of pokemon.abilities">{{ab.ability.name}}</li>
+  <li *ngFor="let ab of pokemon.abilities">{{ ab.ability.name }}</li>
 </ul>
 <ul>
   <li *ngFor="let move of pokemon.moves">
-    {{move.move.name}}
+    {{ move.move.name }}
   </li>
 </ul>

@@ -7,6 +7,7 @@ import { PokemonListComponent } from './components/pokemon-list/pokemon-list.com
 import { HttpClientModule } from '@angular/common/http';
 import { SinglePokemonComponent } from './components/single-pokemon/single-pokemon.component';
 import { PokemonDetailsComponent } from './views/pokemon-details/pokemon-details.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   // componenti
@@ -14,7 +15,8 @@ import { PokemonDetailsComponent } from './views/pokemon-details/pokemon-details
     AppComponent,
     PokemonListComponent,
     SinglePokemonComponent,
-    PokemonDetailsComponent
+    PokemonDetailsComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
