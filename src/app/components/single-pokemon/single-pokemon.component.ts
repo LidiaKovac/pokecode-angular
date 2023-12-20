@@ -14,11 +14,10 @@ export class SinglePokemonComponent {
   constructor(private pkmnSrv: PokemonService) {}
 
   ngOnInit() {
-
     this.pkmnSrv.getPokemonByName(this.pokemonName).subscribe((data) => {
-      if(typeof data !== "string") {
+      if (typeof data !== 'string') {
         this.pokemon = data;
       }
-      });
+    });
   }
 }

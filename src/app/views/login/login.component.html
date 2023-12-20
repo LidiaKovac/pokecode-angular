@@ -1,0 +1,31 @@
+<form [formGroup]="loginData" (ngSubmit)="login()">
+  <input formControlName="email" type="email" placeholder="Email" />
+  <input formControlName="password" type="password" placeholder="Password" />
+  <button>Login</button>
+</form>
+
+
+<!-- <form onsubmit="submitRobe(event)">
+  <input type="text" name="nome">
+  <input type="text" name="cognome">
+  <input type="text" name="email">
+  <input type="text" name="pippo">
+</form>
+
+<script>
+  const submitRobe = (ev) => {
+    ev.preventDefault()
+    fetch("", {
+      method: "POST",
+      body: new FormData(ev.target)
+      /* {
+        nome: ""
+        cognome: ""
+        email: ""
+        pippos: ""
+      }
+
+      */
+    })
+  }
+</script> -->

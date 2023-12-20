@@ -9,6 +9,8 @@ import { SinglePokemonComponent } from './components/single-pokemon/single-pokem
 import { PokemonDetailsComponent } from './views/pokemon-details/pokemon-details.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './views/login/login.component';
+import { SignupComponent } from './views/signup/signup.component';
 
 @NgModule({
   // componenti
@@ -17,7 +19,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PokemonListComponent,
     SinglePokemonComponent,
     PokemonDetailsComponent,
-    NavbarComponent
+    NavbarComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
