@@ -1,9 +1,16 @@
 <form [formGroup]="loginData" (ngSubmit)="login()">
-  <input formControlName="email" type="email" placeholder="Email" />
-  <input formControlName="password" type="password" placeholder="Password" />
+  <input [ngClass]="{
+    'input--error': loginData.controls.email.status === 'INVALID' && loginData.touched
+  }" formControlName="email" type="email" placeholder="Email" />
+  <input [ngClass]="{
+    'input--error': loginData.controls.password.status === 'INVALID' && loginData.touched
+  }" formControlName="password" type="password" placeholder="Password" />
   <button>Login</button>
 </form>
 
+<div *ngIf="loginError">
+  {{loginError}}
+</div>
 
 <!-- <form onsubmit="submitRobe(event)">
   <input type="text" name="nome">

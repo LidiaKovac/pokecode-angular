@@ -2,3 +2,10 @@
 body {
   margin: 0;
 }
+.input--error {
+  border: 2px red solid;
+}
+
+input {
+  transition: 0.2s;
+}

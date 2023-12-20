@@ -1,0 +1,44 @@
+{
+  "users": [
+    {
+      "email": "lidia@lidia",
+      "password": "$2a$10$knGAhYmYYgMk3LBnM/UGJu8HoDQc3b3uc74D/f7VjJjfreSFlGJKm",
+      "name": "Lidia",
+      "lastName": "Kovac",
+      "dob": "",
+      "pronouns": "She Her",
+      "terms": true,
+      "id": 1
+    },
+    {
+      "email": "ldiia@lidia.it",
+      "password": "$2a$10$FgPHnVhe2S9lKq62UOqfwuu3Hez9duVs2A7q0A2PBSxtzUwb0MQEe",
+      "name": "Lidia",
+      "lastName": "Kovac",
+      "dob": "2005-11-30",
+      "pronouns": "She Her",
+      "terms": true,
+      "id": 2
+    },
+    {
+      "email": "lidia@lidia.lidia",
+      "password": "$2a$10$lRbVbn9Swr/3D/4YdBuw2eF.jBinPiwpMH8YD8cOmT6FRUZpSvo3q",
+      "name": "Lidia",
+      "lastName": "Kovac",
+      "dob": "2005-12-30",
+      "pronouns": "She Her",
+      "terms": true,
+      "id": 3
+    },
+    {
+      "email": "paolo@bitta.c14",
+      "password": "$2a$10$H3zGZEdMi2w1T6PgJyyzu.dgNZ91DejqNpMsStsKhRYKwXnMzqTjy",
+      "name": "Paolo",
+      "lastName": "Bitta",
+      "dob": "2005-12-30",
+      "pronouns": "She Her",
+      "terms": true,
+      "id": 4
+    }
+  ]
+}

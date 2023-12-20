@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { catchError, of, throwError } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 import { emailValidator } from 'src/app/validators/email.validator';
 import { requiredValidator } from 'src/app/validators/form.validator';
 
@@ -14,8 +17,20 @@ export class LoginComponent {
     password: new FormControl('', [requiredValidator]),
   });
 
+  loginError!: string | null
+
+  constructor(private authSrv: AuthService, private router: Router) {}
+
   login() {
     // login
-    console.log(this.loginData);
+
+    this.authSrv.login(this.loginData.value).subscribe((res)=> {
+      if(typeof res !== "string") {
+        this.router.navigate([""])
+        this.loginError = null
+      } else {
+        this.loginError = res
+      }
+    });
   }
 }

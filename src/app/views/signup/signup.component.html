@@ -1,13 +1,38 @@
-<form [formGroup]="registerData">
+<form [formGroup]="registerData" (ngSubmit)="signup()">
   <input type="text" formControlName="name" placeholder="name" />
   <input type="text" formControlName="lastName" placeholder="lastName" />
-  <input type="email" formControlName="email" placeholder="email" />
+  <input
+    [ngClass]="{
+      'input--error':
+        registerData.controls.email.status === 'INVALID' &&
+        registerData.controls.email.touched
+    }"
+    type="email"
+    email
+    formControlName="email"
+    placeholder="email"
+  />
+  <div
+    *ngIf="
+      registerData.controls.email.status === 'INVALID' &&
+      registerData.controls.email.touched
+    "
+  >
+    Email is not valid.
+  </div>
   <input type="password" formControlName="password" placeholder="password" />
   <input
     type="password"
     formControlName="passwordConfirm"
     placeholder="Confirm your password"
   />
+  <div
+    *ngIf="registerData.status === 'INVALID'
+          && registerData.errors?.['doPasswordsMatch'] === false
+          && registerData.controls.password.touched"
+  >
+    Le password non combaciano
+  </div>
   <input type="date" formControlName="dob" />
   <select formControlName="pronouns">
     <option selected>She Her</option>
@@ -18,3 +43,7 @@
   <label for="terms">I agree to the terms and conditions</label>
   <button>Join</button>
 </form>
+
+<div *ngIf="error">
+  {{ error }}
+</div>
