@@ -7,10 +7,10 @@ nav {
   padding-inline: 10px;
   .login-button {
     display: flex;
-    gap: 10px
+    gap: 10px;
   }
   .pronouns {
-margin-inline-end: 10px;
+    margin-inline-end: 10px;
   }
   .button {
     border-radius: 50%;
@@ -41,5 +41,16 @@ margin-inline-end: 10px;
         background-color: green;
       }
     }
+  }
+  button {
+    display: inline-block;
+      background-color: #b1c9f0;
+      padding: 5px 10px;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: bold;
+      color: darkblue;
+      border: 2px solid darkblue;
+      outline: 2px solid lighten(darkblue, 50%);
   }
 }
