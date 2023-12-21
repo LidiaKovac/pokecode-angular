@@ -1,0 +1,9 @@
+:host ::ng-deep form {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  margin-inline: 10%;
+  background-color: rgb(206, 206, 206);
+  box-shadow: 10px 10px 0px 0px rgb(0, 0, 0, 0.15);
+  -webkit-box-shadow: 10px 10px 0px 0px rgb(0, 0, 0, 0.15);
+}

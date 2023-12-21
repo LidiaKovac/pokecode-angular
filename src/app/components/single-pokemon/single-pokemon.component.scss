@@ -1,10 +1,59 @@
 :host {
-  width: calc(25% - (20px * 3));
+  width: calc(30% - (20px * 3) - 20px);
   // flex: 1 1 200px;
+  min-width: 400px;
+  display: block;
 }
 
 .single-pkmn__wrap {
+  display: flex;
+  // gap: 20px;
+  align-items: flex-start;
+  background-color: white;
+  color: black;
+  border: 5px solid black;
+  border-radius: 6px;
+  border-bottom-right-radius: 20px;
+  padding: 10px;
   img {
-    width: 100%;
+    width: 40%;
+    background-color: #d9d9d9;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+    border-radius: 6px;
+    border-top-right-radius: 0px;
+  }
+  .pokemon__info {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .info__details {
+    height: 40%;
+    // margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    a {
+      display: inline-block;
+      background-color: #b1c9f0;
+      padding: 5px 10px;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: bold;
+      color: darkblue;
+    }
+  }
+  .info__area {
+    // width: 60%;
+    height: 60%;
+    border-bottom-right-radius: 20px;
+
+    background-color: #d9d9d9;
+    padding-inline-start: 20px;
+    padding-block: 10px;
   }
 }

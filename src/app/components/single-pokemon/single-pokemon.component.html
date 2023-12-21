@@ -9,11 +9,17 @@
     [src]="pokemon.sprites.other?.['official-artwork']?.front_default"
     alt=""
   />
-  <h3>{{ pokemonName }}</h3>
-  <ul>
-    <li *ngFor="let ab of pokemon.abilities">
-      {{ ab.ability.name }}
-    </li>
-  </ul>
-  <a [routerLink]="['pokemon', pokemon.name]">Dettagli</a>
+  <div class="pokemon__info">
+    <div class="info__area">
+      <h3>{{ pokemonName }}</h3>
+      <ul>
+        <li *ngFor="let ab of pokemon.abilities">
+          {{ ab.ability.name }}
+        </li>
+      </ul>
+    </div>
+    <div class="info__details">
+      <a [routerLink]="[pokemon.name]">Dettagli</a>
+    </div>
+  </div>
 </div>

@@ -1,0 +1,38 @@
+<app-form [formTitle]="'Modifica Profilo: '">
+  <form [formGroup]="editProfile" (ngSubmit)="edit()">
+    <input type="text" formControlName="name" placeholder="name" />
+    <input type="text" formControlName="lastName" placeholder="lastName" />
+    <input
+      [ngClass]="{
+        'input--error':
+          editProfile.controls['email'].status === 'INVALID' &&
+          editProfile.controls['email'].touched
+      }"
+      type="email"
+      email
+      formControlName="email"
+      placeholder="email"
+    />
+    <div
+      *ngIf="
+        editProfile.controls['email'].status === 'INVALID' &&
+        editProfile.controls['email'].touched
+      "
+    >
+      Email is not valid.
+    </div>
+    <!-- <input type="password" formControlName="password" placeholder="password" /> -->
+    <input type="date" formControlName="dob" />
+    <select formControlName="pronouns">
+      <option selected>She Her</option>
+      <option>He Him</option>
+      <option>They Them</option>
+    </select>
+
+    <button>Edit</button>
+  </form>
+</app-form>
+
+<div *ngIf="error">
+  {{ error }}
+</div>

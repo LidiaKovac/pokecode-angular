@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { ErrorService } from 'src/app/services/error.service';
 import { checkboxValidator } from 'src/app/validators/checkbox.validator';
 import { dateValidator } from 'src/app/validators/date.validator';
 import { emailValidator } from 'src/app/validators/email.validator';
@@ -17,8 +18,6 @@ import {
   styleUrls: ['./signup.component.scss'],
 })
 export class SignupComponent {
-  constructor(private authSrv: AuthService, private router: Router) {}
-
   registerData = new FormGroup(
     {
       name: new FormControl('', [requiredValidator]),
@@ -34,14 +33,24 @@ export class SignupComponent {
     },
     [passwordMatchValidator]
   );
-  error!: string;
+  error!: string | null;
+
+  constructor(
+    private authSrv: AuthService,
+    private router: Router,
+    private errorSrv: ErrorService
+  ) {
+    this.errorSrv.error.subscribe((res) => (this.error = res));
+    this.error = '';
+  }
   signup() {
+    console.log(this.registerData);
     if (this.registerData.status === 'VALID') {
       this.authSrv.signup(this.registerData.value).subscribe((res) => {
         if (typeof res === 'string') {
           this.error = res;
         } else {
-          this.router.navigate(['login']);
+          this.router.navigate(['']);
         }
       });
     } else alert('Form is invalid');

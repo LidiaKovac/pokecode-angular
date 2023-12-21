@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { catchError, of, throwError } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
+import { ErrorService } from 'src/app/services/error.service';
 import { emailValidator } from 'src/app/validators/email.validator';
 import { requiredValidator } from 'src/app/validators/form.validator';
 
@@ -18,18 +19,22 @@ export class LoginComponent {
   });
 
   loginError!: string | null
-
-  constructor(private authSrv: AuthService, private router: Router) {}
+  constructor(private authSrv: AuthService, private router: Router, private errorSrv: ErrorService) {
+    this.errorSrv.error.subscribe(res => {
+      this.loginError = res
+    })
+  }
 
   login() {
     // login
 
     this.authSrv.login(this.loginData.value).subscribe((res)=> {
+      console.log(res)
       if(typeof res !== "string") {
-        this.router.navigate([""])
-        this.loginError = null
+        this.router.navigate(["pokemon"])
+
       } else {
-        this.loginError = res
+
       }
     });
   }

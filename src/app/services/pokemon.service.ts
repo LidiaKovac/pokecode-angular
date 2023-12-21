@@ -46,12 +46,6 @@ export class PokemonService {
 
   getPokemonByName(name: string) {
     return this.http
-      .get<Pokemon>('https://pokeapi.co/api/v2/pokemon/' + name)
-      .pipe(
-        catchError((err) => {
-          console.log(err);
-          return err.error as string;
-        })
-      );
+      .get<Pokemon>('https://pokeapi.co/api/v2/pokemon/' + name);
   }
 }

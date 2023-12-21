@@ -5,6 +5,13 @@ nav {
   align-items: center;
   gap: 20px;
   padding-inline: 10px;
+  .login-button {
+    display: flex;
+    gap: 10px
+  }
+  .pronouns {
+margin-inline-end: 10px;
+  }
   .button {
     border-radius: 50%;
     &--big {

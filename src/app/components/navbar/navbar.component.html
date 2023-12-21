@@ -1,5 +1,5 @@
 <nav>
-  <a [routerLink]="['']" class="button button--big"></a>
+  <a [routerLink]="['pokemon']" class="button button--big"></a>
   <div></div>
   <div class="button button--small"></div>
   <div class="button button--small"></div>
@@ -12,4 +12,18 @@
   <!-- fn(ev) {
        ev.target.value => cerca
     } -->
+  <button *ngIf="isLoggedIn" (click)="logout()">Logout</button>
+  <div *ngIf="isLoggedIn">
+    Benvenut<span class="pronouns" [ngSwitch]="user?.pronouns">
+      <span *ngSwitchCase="'She Her'">a</span>
+      <span *ngSwitchCase="'He Him'">o</span>
+      <span *ngSwitchCase="'They Them'">*</span>
+    </span>
+    <span>{{ user?.name }}</span>
+    <a [routerLink]="['profile']">Profile</a>
+  </div>
+  <div class="login-button" *ngIf="!isLoggedIn">
+    <a [routerLink]="['']">Login</a>
+    <a [routerLink]="['join']">Join</a>
+  </div>
 </nav>
