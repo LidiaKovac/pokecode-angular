@@ -1,13 +1,27 @@
+@import "../../../styles/mixins";
 :host {
   display: block;
-}
-main {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
   background-color: #0adc294f;
-  padding-block: 30px;
-  padding-inline: 10px;
-
+  padding-block-start: 20px;
+  .pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    button {
+      @include arcadeButton();
+      width: 30px;
+      height: 30px;
+      border-radius: 5px;
+      border-bottom-right-radius: 10px;
+      font-weight: bold;
+    }
+  }
+  main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding-block: 30px;
+    padding-inline: 10px;
+  }
 }

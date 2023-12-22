@@ -40,13 +40,14 @@
       <option>He Him</option>
       <option>They Them</option>
     </select>
-    <input type="checkbox" formControlName="terms" />
-    <label for="terms">I agree to the terms and conditions</label>
+    <div class="terms-area">
+      <input type="checkbox" formControlName="terms" />
+      <label for="terms">I agree to the terms and conditions</label>
+    </div>
     <button>Join</button>
   </form>
 
   <div *ngIf="error">
     {{ error }}
   </div>
-
 </app-form>

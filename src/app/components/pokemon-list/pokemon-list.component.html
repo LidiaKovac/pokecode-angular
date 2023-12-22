@@ -10,19 +10,14 @@
     }
 
    -->
+<div class="pagination">
+  <button *ngFor="let page of displayPageNo" (click)="fetchByPage(page)">
+    {{ page + 1 }}
+  </button>
+</div>
 <main *ngIf="pkmns?.results">
   <app-single-pokemon
     *ngFor="let pkmn of pkmns.results"
     [pokemonName]="pkmn.name"
   ></app-single-pokemon>
 </main>
-<div class="pagination">
-  <button
-    *ngFor="
-      let page of displayPageNo
-    "
-    (click)="fetchByPage(page)"
-  >
-    {{ page + 1 }}
-  </button>
-</div>

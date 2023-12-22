@@ -1,9 +1,32 @@
-:host ::ng-deep form {
-  display: flex;
-  flex-direction: column;
+@import "../../../styles/mixins";
+:host {
+  display: block;
+  height: 100%;
+  width: 50%;
+  @include arcadeButton();
   padding: 20px;
-  margin-inline: 10%;
-  background-color: rgb(206, 206, 206);
-  box-shadow: 10px 10px 0px 0px rgb(0, 0, 0, 0.15);
-  -webkit-box-shadow: 10px 10px 0px 0px rgb(0, 0, 0, 0.15);
+  text-align: center;
+  ::ng-deep form {
+    display: flex;
+    flex-direction: column;
+    min-height: 400px;
+    gap: 30px;
+    height: 60%;
+    padding: 20px;
+    margin-inline: 10%;
+    input:not([type="checkbox"]),
+    button,select {
+      @include arcadeButton();
+      height: 30px;
+      font-family: monospace;
+      &::placeholder {
+        font-family: monospace;
+      }
+
+      font-weight: bold;
+      background-color: white ;
+    }
+
+
+  }
 }

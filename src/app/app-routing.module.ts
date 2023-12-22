@@ -16,6 +16,8 @@ const routes: Routes = [
   {
     path: 'pokemon/:name',
     component: PokemonDetailsComponent,
+    canActivate: [PokemonListGuard],
+
   },
   {
     path: '',

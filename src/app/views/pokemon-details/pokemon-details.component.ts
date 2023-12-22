@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { map, switchMap } from 'rxjs';
 import { Pokemon } from 'src/app/interfaces/pokemon.interface';
 import { PokemonService } from 'src/app/services/pokemon.service';
-
+import * as _ from "lodash"
 @Component({
   selector: 'app-pokemon-details',
   templateUrl: './pokemon-details.component.html',
@@ -12,6 +12,8 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 export class PokemonDetailsComponent {
   pokemon!: Pokemon;
   error: string|null = null
+  movesByLevel: any
+  Object = Object
   constructor(private route: ActivatedRoute, private pkmnSrv: PokemonService) {
     // route.paramMap.subscribe((param) => {
     //   console.log(param.get("name"));
@@ -46,6 +48,7 @@ export class PokemonDetailsComponent {
         } else {
           this.error = null
           this.pokemon = pkmn
+          this.movesByLevel = _.groupBy(pkmn.moves, (move) => move.version_group_details[0].level_learned_at)
         }
       });
   }

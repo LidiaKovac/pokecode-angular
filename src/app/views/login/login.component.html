@@ -1,5 +1,8 @@
 <app-form [formTitle]="'Login: '">
   <form [formGroup]="loginData" (ngSubmit)="login()">
+    <button type="button">Login with Google</button>
+    <button type="button">Login with Meta</button>
+    <div class="divider">or</div>
     <input
       [ngClass]="{
         'input--error':
@@ -19,6 +22,7 @@
       placeholder="Password"
     />
     <button>Login</button>
+
   </form>
 
   <div *ngIf="loginError">

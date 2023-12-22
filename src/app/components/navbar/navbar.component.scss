@@ -1,56 +1,84 @@
+@import "../../../styles/mixins";
+
 nav {
   height: 100px;
   background-color: #dc0a2d;
+  padding-inline: 40px;
   display: flex;
   align-items: center;
-  gap: 20px;
-  padding-inline: 10px;
+  justify-content: space-between;
+  > * {
+    width: 33%;
+  }
+  .pokedex-buttons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
   .login-button {
     display: flex;
     gap: 10px;
   }
-  .pronouns {
-    margin-inline-end: 10px;
-  }
+
   .button {
     border-radius: 50%;
+    transition: 0.3s;
+      &:hover {
+        transform: rotate(90deg);
+      }
     &--big {
-      background-color: aqua;
-      border-top: lighten(rgb(0, 255, 255), 40) solid 5px;
-      border-left: lighten(rgb(0, 255, 255), 40) solid 5px;
+      $color: aqua;
+      @include button($color, 5px);
       width: 50px;
       height: 50px;
+
     }
     &--small {
+      $color: orange;
       width: 15px;
       height: 15px;
+      @include button($color, 2px);
 
       &:nth-of-type(2) {
-        border-top: lighten(orange, 30) solid 2px;
-        border-left: lighten(orange, 30) solid 2px;
-        background-color: orange;
+        $color: yellow;
+        @include button($color, 2px);
       }
       &:nth-of-type(3) {
-        border-top: lighten(yellow, 20) solid 2px;
-        border-left: lighten(yellow, 20) solid 2px;
-        background-color: yellow;
+        $color: green;
+        @include button($color, 2px);
       }
-      &:nth-of-type(4) {
-        border-top: lighten(green, 20) solid 2px;
-        border-left: lighten(green, 20) solid 2px;
-        background-color: green;
+    }
+  }
+  form {
+    text-align: center;
+     input {
+      @include arcadeButton();
+      &::placeholder {
+        font-family: monospace;
+      }
+    }
+  }
+  .user-area {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: flex-end;
+    .name-area {
+      color: white;
+      font-weight: bold;
+      .pronouns {
+        margin-inline-end: 10px;
       }
     }
   }
   button {
     display: inline-block;
-      background-color: #b1c9f0;
-      padding: 5px 10px;
-      text-decoration: none;
-      text-transform: uppercase;
-      font-weight: bold;
-      color: darkblue;
-      border: 2px solid darkblue;
-      outline: 2px solid lighten(darkblue, 50%);
+    padding: 5px 10px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    @include arcadeButton();
+    cursor: pointer;
   }
+
 }

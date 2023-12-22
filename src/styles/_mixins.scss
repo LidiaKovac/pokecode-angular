@@ -1,0 +1,14 @@
+@mixin button($color, $size) {
+  background-color: $color;
+  border-top: lighten($color, 40) solid $size;
+  border-left: lighten($color, 40) solid $size;
+  border-right: darken($color, 10) solid $size;
+  border-bottom: darken($color, 10) solid $size;
+}
+
+@mixin arcadeButton() {
+  background-color: #b1c9f0;
+  color: darkblue;
+  border: 2px solid darkblue;
+  outline: 2px solid lighten(darkblue, 50%);
+}

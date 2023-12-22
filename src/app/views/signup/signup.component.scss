@@ -1,5 +1,15 @@
-form {
+:host {
+  padding-inline: 10%;
+  min-height: calc(100vh - 100px);
+
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
+  .terms-area {
+    display: flex;
+    align-items: center;
+  }
+  form {
+    gap: 20px
+  }
 }

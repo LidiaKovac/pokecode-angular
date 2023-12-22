@@ -1,29 +1,37 @@
 <nav>
-  <a [routerLink]="['pokemon']" class="button button--big"></a>
-  <div></div>
-  <div class="button button--small"></div>
-  <div class="button button--small"></div>
-  <div class="button button--small"></div>
-  <form (submit)="search($event)">
-    <input name="query" type="text" [(ngModel)]="query" />
+  <div class="pokedex-buttons">
+    <a [routerLink]="['pokemon']" class="button button--big"></a>
+    <div class="button button--small"></div>
+    <div class="button button--small"></div>
+    <div class="button button--small"></div>
+  </div>
+  <form *ngIf="isLoggedIn" (submit)="search($event)">
+    <input
+      name="query"
+      type="text"
+      [(ngModel)]="query"
+      placeholder="Search for a pokemon..."
+    />
     <button style="display: none"></button>
   </form>
   <!-- <input type="text" [formControl]="query2" /> -->
   <!-- fn(ev) {
        ev.target.value => cerca
     } -->
-  <button *ngIf="isLoggedIn" (click)="logout()">Logout</button>
-  <div *ngIf="isLoggedIn">
-    Benvenut<span class="pronouns" [ngSwitch]="user?.pronouns">
-      <span *ngSwitchCase="'She Her'">a</span>
-      <span *ngSwitchCase="'He Him'">o</span>
-      <span *ngSwitchCase="'They Them'">*</span>
-    </span>
-    <span>{{ user?.name }}</span>
-    <a [routerLink]="['profile']">Profile</a>
+  <div class="user-area" *ngIf="isLoggedIn">
+    <h3 class="name-area">
+      Benvenut<span class="pronouns" [ngSwitch]="user?.pronouns">
+        <span *ngSwitchCase="'She Her'">a</span>
+        <span *ngSwitchCase="'He Him'">o</span>
+        <span *ngSwitchCase="'They Them'">*</span>
+      </span>
+      <span>{{ user?.name }}</span>
+    </h3>
+    <a [routerLink]="['profile']"><button>Profile</button></a>
+    <button (click)="logout()">Logout</button>
   </div>
-  <div class="login-button" *ngIf="!isLoggedIn">
-    <a [routerLink]="['']">Login</a>
-    <a [routerLink]="['join']">Join</a>
+  <div class="login-button user-area" *ngIf="!isLoggedIn">
+    <a [routerLink]="['']"><button>Login</button></a>
+    <a [routerLink]="['join']"><button>Join</button></a>
   </div>
 </nav>
