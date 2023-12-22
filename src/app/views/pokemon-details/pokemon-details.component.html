@@ -2,11 +2,11 @@
   <h1>{{ pokemon.name }}</h1>
   <div class="details__header">
     <img
-      [src]="pokemon.sprites.other?.['official-artwork']?.front_default"
+      [src]="pokemon.sprites.other?.['official-artwork']?.front_default || 'http://placehold.it/300x300' "
       alt=""
     />
     <img
-      [src]="pokemon.sprites.other?.['official-artwork']?.front_shiny"
+      [src]="pokemon.sprites.other?.['official-artwork']?.front_shiny || 'http://placehold.it/300x300'"
       alt=""
     />
     <div class="details__info">

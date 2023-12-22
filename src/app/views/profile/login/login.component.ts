@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { catchError, of, throwError } from 'rxjs';
+import { Subscription, catchError, of, throwError } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { ErrorService } from 'src/app/services/error.service';
 import { emailValidator } from 'src/app/validators/email.validator';
@@ -17,25 +17,33 @@ export class LoginComponent {
     email: new FormControl('', [emailValidator, requiredValidator]),
     password: new FormControl('', [requiredValidator]),
   });
-
-  loginError!: string | null
-  constructor(private authSrv: AuthService, private router: Router, private errorSrv: ErrorService) {
-    this.errorSrv.error.subscribe(res => {
-      this.loginError = res
-    })
+  subscriptions: Subscription[] = [];
+  loginError!: string | null;
+  constructor(
+    private authSrv: AuthService,
+    private router: Router,
+    private errorSrv: ErrorService
+  ) {
+    this.subscriptions.push(
+      this.errorSrv.error.subscribe((res) => {
+        this.loginError = res;
+      })
+    );
   }
 
   login() {
     // login
 
-    this.authSrv.login(this.loginData.value).subscribe((res)=> {
-      console.log(res)
-      if(typeof res !== "string") {
-        this.router.navigate(["pokemon"])
-
+    this.authSrv.login(this.loginData.value).subscribe((res) => {
+      console.log(res);
+      if (typeof res !== 'string') {
+        this.router.navigate(['pokemon']);
       } else {
-
       }
     });
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe())
   }
 }

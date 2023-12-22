@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { ErrorService } from 'src/app/services/error.service';
 import { checkboxValidator } from 'src/app/validators/checkbox.validator';
@@ -34,14 +35,14 @@ export class SignupComponent {
     [passwordMatchValidator]
   );
   error!: string | null;
+  subscriptions: Subscription[] = []
 
   constructor(
     private authSrv: AuthService,
     private router: Router,
     private errorSrv: ErrorService
   ) {
-    this.errorSrv.error.subscribe((res) => (this.error = res));
-    this.error = '';
+    this.subscriptions.push(this.errorSrv.error.subscribe((res) => (this.error = res)))
   }
   signup() {
     console.log(this.registerData);
@@ -54,5 +55,8 @@ export class SignupComponent {
         }
       });
     } else alert('Form is invalid');
+  }
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe())
   }
 }

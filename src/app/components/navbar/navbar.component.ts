@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { User } from 'src/app/interfaces/user.interface';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -13,10 +14,14 @@ import { AuthService } from 'src/app/services/auth.service';
 export class NavbarComponent {
   query: string = '';
   user!: Partial<User> | null;
-  isLoggedIn!: boolean
+  isLoggedIn!: boolean;
+  subscriptions: Subscription[] = []
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe())
+  }
   constructor(private router: Router, private authSrv: AuthService) {
-    this.authSrv.user.subscribe((res) => (this.user = res));
-    this.authSrv.isLoggedIn.subscribe((res) => (this.isLoggedIn = res));
+    this.subscriptions.push(this.authSrv.user.subscribe((res) => (this.user = res)));
+    this.subscriptions.push(this.authSrv.isLoggedIn.subscribe((res) => (this.isLoggedIn = res)));
   }
 
   search(ev: Event) {
@@ -29,4 +34,6 @@ export class NavbarComponent {
   logout() {
     this.authSrv.logout();
   }
+
+
 }

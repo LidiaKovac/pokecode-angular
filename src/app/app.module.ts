@@ -9,31 +9,21 @@ import { SinglePokemonComponent } from './components/single-pokemon/single-pokem
 import { PokemonDetailsComponent } from './views/pokemon-details/pokemon-details.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LoginComponent } from './views/login/login.component';
-import { SignupComponent } from './views/signup/signup.component';
-import { FormComponent } from './components/form/form.component';
-import { ProfilePageComponent } from './views/profile-page/profile-page.component';
 import { ErrorInterceptor } from './interceptors/errorHandler.interceptor';
+import { ProfileModule } from './views/profile/profile.module';
+import { PokemonListModule } from './components/pokemon-list/pokemon-list.module';
 
 @NgModule({
   // componenti
-  declarations: [
-    AppComponent,
-    PokemonListComponent,
-    SinglePokemonComponent,
-    PokemonDetailsComponent,
-    NavbarComponent,
-    LoginComponent,
-    SignupComponent,
-    FormComponent,
-    ProfilePageComponent,
-  ],
+  declarations: [AppComponent, PokemonDetailsComponent, NavbarComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,
+    // Moduli custom:
+    AppRoutingModule,
+    ProfileModule,
+    PokemonListModule,
   ],
   providers: [
     {

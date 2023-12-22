@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { map, switchMap } from 'rxjs';
+import { Subscription, map, switchMap } from 'rxjs';
 import { Pokemon } from 'src/app/interfaces/pokemon.interface';
 import { PokemonService } from 'src/app/services/pokemon.service';
 import * as _ from "lodash"
@@ -14,6 +14,7 @@ export class PokemonDetailsComponent {
   error: string|null = null
   movesByLevel: any
   Object = Object
+  subscriptions: Subscription[] = []
   constructor(private route: ActivatedRoute, private pkmnSrv: PokemonService) {
     // route.paramMap.subscribe((param) => {
     //   console.log(param.get("name"));
@@ -27,7 +28,7 @@ export class PokemonDetailsComponent {
       ! switchMap => permette di "concatenare" gli observable
       ? https://raghuvardhankaranam.medium.com/tap-map-and-switchmap-10cc79006b4a
       */
-    route.paramMap
+    const obs = this.route.paramMap
       .pipe(
         // Observable param => string
         map((param) => {
@@ -37,7 +38,7 @@ export class PokemonDetailsComponent {
         // Observable pokemon => Observable
         switchMap((name) => {
           if (name) {
-            return pkmnSrv.getPokemonByName(name);
+            return this.pkmnSrv.getPokemonByName(name);
           } else throw 'Name param not found!';
         })
       )
@@ -51,5 +52,9 @@ export class PokemonDetailsComponent {
           this.movesByLevel = _.groupBy(pkmn.moves, (move) => move.version_group_details[0].level_learned_at)
         }
       });
+      this.subscriptions.push(obs)
+  }
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe())
   }
 }
