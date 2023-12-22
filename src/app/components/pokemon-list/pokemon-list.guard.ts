@@ -5,7 +5,6 @@ import {
   Router,
   RouterStateSnapshot,
   UrlTree,
-  createUrlTreeFromSnapshot,
 } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';

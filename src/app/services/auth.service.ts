@@ -1,13 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User, lsAuth } from '../interfaces/user.interface';
-import {
-  BehaviorSubject,
-  Observable,
-  of,
-  switchMap,
-  tap,
-} from 'rxjs';
+import { BehaviorSubject, Observable, of, switchMap, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { LoadingService } from './loading.service';
@@ -23,14 +17,16 @@ export class AuthService {
   private $user = new BehaviorSubject<Partial<User> | null>(null);
   user = this.$user.asObservable() as Observable<User>;
 
-  constructor(private http: HttpClient, private router: Router, private loadingSrv: LoadingService) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private loadingSrv: LoadingService
+  ) {}
 
   signup(user: Partial<User>) {
     const cleanUser = user;
     delete cleanUser.passwordConfirm;
-    return this.http.post('http://localhost:3000/signup', cleanUser).pipe(
-
-    );
+    return this.http.post('http://localhost:3000/signup', cleanUser);
   }
 
   login(loginData: Partial<User>) {
@@ -62,7 +58,6 @@ export class AuthService {
       //   loginData.accessToken
       // );
       const decoded = this.jwtHelper.decodeToken(ls);
-      console.log(decoded);
       this.http
         .get<User[]>('http://localhost:3000/users?email=' + decoded.email)
         .subscribe((res) => {
@@ -71,12 +66,12 @@ export class AuthService {
       if (!tokenExpired) {
         this.$isLoggedIn.next(true);
         // this.router.navigate(['pokemon']);
-        this.router.createUrlTree([''])
+        this.router.createUrlTree(['']);
       } else {
         this.logout();
       }
     } else this.$isLoggedIn.next(false);
-    this.loadingSrv.setLoading(false)
+    this.loadingSrv.setLoading(false);
   }
 
   logout() {

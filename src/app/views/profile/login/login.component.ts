@@ -35,7 +35,6 @@ export class LoginComponent {
     // login
 
     this.authSrv.login(this.loginData.value).subscribe((res) => {
-      console.log(res);
       if (typeof res !== 'string') {
         this.router.navigate(['pokemon']);
       } else {

@@ -45,7 +45,6 @@ export class SignupComponent {
     this.subscriptions.push(this.errorSrv.error.subscribe((res) => (this.error = res)))
   }
   signup() {
-    console.log(this.registerData);
     if (this.registerData.status === 'VALID') {
       this.authSrv.signup(this.registerData.value).subscribe((res) => {
         if (typeof res === 'string') {
