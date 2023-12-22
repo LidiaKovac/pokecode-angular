@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, tap } from 'rxjs';
 import { Pokemon, PokemonAPIResponse } from '../interfaces/pokemon.interface';
+import { LoadingService } from './loading.service';
 
 @Injectable({
   providedIn: 'root',
@@ -9,9 +10,10 @@ import { Pokemon, PokemonAPIResponse } from '../interfaces/pokemon.interface';
 export class PokemonService {
   // separazione delle competenze
   pageNo = 1;
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private loadingSrv: LoadingService) {}
 
   getPokemon(page: number = 0) {
+    this.loadingSrv.setLoading
     // "https://pokeapi.co/api/v2/pokemon/"
     // https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20 => page 2
     // "?offset=0&limit=20"

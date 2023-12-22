@@ -6,12 +6,22 @@
     <div class="button button--small"></div>
   </div>
   <form *ngIf="isLoggedIn" (submit)="search($event)">
+    <!-- <mat-form-field>
+      <mat-label>Search</mat-label>
+      <input
+      matInput
+      name="query"
+      type="text"
+      [(ngModel)]="query"
+      placeholder="Search for a pokemon..."
+      />
+    </mat-form-field> -->
     <input
       name="query"
       type="text"
       [(ngModel)]="query"
       placeholder="Search for a pokemon..."
-    />
+      />
     <button style="display: none"></button>
   </form>
   <!-- <input type="text" [formControl]="query2" /> -->

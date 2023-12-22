@@ -14,3 +14,9 @@ input {
 * {
   box-sizing: border-box;
 }
+
+mat-spinner {
+  svg {
+    stroke: red!important;
+  }
+}

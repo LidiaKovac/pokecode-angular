@@ -10,6 +10,7 @@ import {
 } from 'rxjs';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { LoadingService } from './loading.service';
 
 @Injectable({
   providedIn: 'root',
@@ -22,7 +23,7 @@ export class AuthService {
   private $user = new BehaviorSubject<Partial<User> | null>(null);
   user = this.$user.asObservable() as Observable<User>;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router, private loadingSrv: LoadingService) {}
 
   signup(user: Partial<User>) {
     const cleanUser = user;
@@ -75,6 +76,7 @@ export class AuthService {
         this.logout();
       }
     } else this.$isLoggedIn.next(false);
+    this.loadingSrv.setLoading(false)
   }
 
   logout() {

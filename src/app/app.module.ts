@@ -12,10 +12,23 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ErrorInterceptor } from './interceptors/errorHandler.interceptor';
 import { ProfileModule } from './views/profile/profile.module';
 import { PokemonListModule } from './components/pokemon-list/pokemon-list.module';
+import { NotFoundComponent } from './views/404/404.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
+
+
 
 @NgModule({
   // componenti
-  declarations: [AppComponent, PokemonDetailsComponent, NavbarComponent],
+  declarations: [
+    AppComponent,
+    PokemonDetailsComponent,
+    NavbarComponent,
+    NotFoundComponent,
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -24,6 +37,11 @@ import { PokemonListModule } from './components/pokemon-list/pokemon-list.module
     AppRoutingModule,
     ProfileModule,
     PokemonListModule,
+    // Angular Material:
+    BrowserAnimationsModule,
+    MatProgressSpinnerModule,
+    MatInputModule,
+    MatFormFieldModule
   ],
   providers: [
     {
